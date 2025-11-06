@@ -1,9 +1,7 @@
 package com.vissermc.trivially;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
@@ -12,10 +10,10 @@ import java.util.List;
 public class OpenTDBFetcher {
 
     private final WebClient webClient;
-    private final SingleRowService singleRowService;
+    private final TriviaSourceService singleRowService;
 
     // Primary constructor used by Spring where the URL comes from SingleRowService
-    public OpenTDBFetcher(WebClient.Builder builder, SingleRowService singleRowService) {
+    public OpenTDBFetcher(WebClient.Builder builder, TriviaSourceService singleRowService) {
         this.webClient = builder.build();
         this.singleRowService = singleRowService;
     }

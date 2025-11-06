@@ -6,13 +6,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 // Simple store of some properties
 @Service
-public class SingleRowService {
+public class TriviaSourceService {
 
     private final SingleRowRepository repo;
     private final String defaultUrl;
 
-    public SingleRowService(SingleRowRepository repo,
-                            @Value("${trivially.default-url}") String defaultUrl) {
+    public TriviaSourceService(SingleRowRepository repo,
+                               @Value("${trivially.default-url}") String defaultUrl) {
         this.repo = repo;
         this.defaultUrl = defaultUrl;
     }

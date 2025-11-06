@@ -12,15 +12,19 @@ import java.util.List;
 @Primary
 public class TriviaServiceImpl implements TriviaService {
     private final OpenTDBFetcher fetcher;
+    private final TriviaSourceService sourceService;
     private final List<String> correctAnswers = new ArrayList<>();
     private final List<QuestionDTO> questions = new ArrayList<>();
 
-    public TriviaServiceImpl(OpenTDBFetcher fetcher) {
+    public TriviaServiceImpl(OpenTDBFetcher fetcher, TriviaSourceService sourceService) {
         this.fetcher = fetcher;
+        this.sourceService = sourceService;
     }
 
     @PostConstruct
-    void init() {
+    void reload() {
+        correctAnswers.clear();
+        questions.clear();
         var qna = fetcher.fetchQuestionsAndAnswers();
         for (OpenTDBFetcher.OpenTriviaQuestion q : qna) {
             String question = org.apache.commons.text.StringEscapeUtils.unescapeHtml4(q.question());
@@ -47,12 +51,18 @@ public class TriviaServiceImpl implements TriviaService {
     @Override
     public ResultDTO checkAnswers(AnswerSubmission submission) {
         int score = 0;
-        if (submission.getAnswers().size() != correctAnswers.size()) {
+        if (submission.answers().size() != correctAnswers.size()) {
             throw new IllegalArgumentException("Internal error: Lists must be the same size");
         }
         for (int i = 0; i < correctAnswers.size(); i++) {
-            if (correctAnswers.get(i).equals(submission.getAnswers().get(i))) score++;
+            if (correctAnswers.get(i).equals(submission.answers().get(i))) score++;
         }
         return new ResultDTO(correctAnswers, score);
+    }
+
+    @Override
+    public void updateUrl(String url) {
+        sourceService.setUrl(url);
+        reload();
     }
 }

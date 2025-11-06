@@ -1,27 +1,29 @@
 package com.vissermc.trivially;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @Service
 public class OpenTDBFetcher {
 
     private final WebClient webClient;
+    private final SingleRowService singleRowService;
 
-    public OpenTDBFetcher(WebClient.Builder builder) {
-        this.webClient = builder
-                .baseUrl("https://opentdb.com")
-                .build();
+    // Primary constructor used by Spring where the URL comes from SingleRowService
+    public OpenTDBFetcher(WebClient.Builder builder, SingleRowService singleRowService) {
+        this.webClient = builder.build();
+        this.singleRowService = singleRowService;
     }
 
     public List<OpenTriviaQuestion> fetchQuestionsAndAnswers() {
+        String url = singleRowService.getUrl();
         OpenTriviaResponse response = webClient.get()
-                .uri(uri -> uri.path("/api.php")
-                        .queryParam("amount", 10)
-                        .queryParam("type", "multiple")
-                        .build())
+                .uri(URI.create(url))
                 .retrieve()
                 .bodyToMono(OpenTriviaResponse.class)
                 .block();

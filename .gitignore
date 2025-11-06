@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+/data/trivially.lock.db
+/data/trivially.mv.db
+/data/trivially.trace.db

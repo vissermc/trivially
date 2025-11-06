@@ -4,7 +4,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.Getter;
 import lombok.Setter;
 
 // Store all persistent changeable properties in a single row
@@ -14,10 +13,9 @@ public class SingleRow {
 
     @Id
     @Column(name = "id")
-    private Long id = 1L;
+    final private Long id = 1L;
 
     @Setter
-    @Getter
     @Column(name = "url", nullable = false)
     private String url;
 
@@ -28,5 +26,11 @@ public class SingleRow {
     public SingleRow(String url) {
         this.url = url;
     }
+
+    @SuppressWarnings("LombokGetterMayBeUsed") // cannot be used because of Vite
+    public String getUrl() {
+        return url;
+    }
+
 
 }

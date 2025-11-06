@@ -34,3 +34,9 @@ build/
 /data/trivially.lock.db
 /data/trivially.mv.db
 /data/trivially.trace.db
+
+### Client front-end ###
+client/node
+client/node_modules
+client/.vite
+client/dist

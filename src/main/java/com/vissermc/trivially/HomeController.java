@@ -10,4 +10,10 @@ public class HomeController {
     {
         return "index.html";
     }
+
+    @RequestMapping("/vj82fba8ifi1yht45d1mnd3q0ihf8x")
+    public String getAdmin()
+    {
+        return "index.html";
+    }
 }

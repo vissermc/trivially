@@ -65,4 +65,9 @@ public class TriviaServiceImpl implements TriviaService {
         sourceService.setUrl(url);
         reload();
     }
+
+    @Override
+    public String getCurrentUrl() {
+        return sourceService.getUrl();
+    }
 }

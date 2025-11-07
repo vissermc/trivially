@@ -101,6 +101,65 @@
   background-color: #218838;
 }
 
+.admin-panel {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 4px;
+  border: 1px solid #dee2e6;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.admin-panel h2 {
+  margin: 0;
+  color: #495057;
+}
+
+.close-admin-btn {
+  padding: 0.5rem 1rem;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.close-admin-btn:hover {
+  background-color: #5a6268;
+}
+
+.admin-panel form {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.admin-panel input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}
+
+.admin-panel button {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.admin-panel button:hover {
+  background-color: #0056b3;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

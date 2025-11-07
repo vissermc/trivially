@@ -9,4 +9,6 @@ public interface TriviaService {
     ResultDTO checkAnswers(AnswerSubmission submission);
 
     void updateUrl(String url);
+
+    String getCurrentUrl();
 }

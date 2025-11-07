@@ -1,8 +1,102 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.question {
+  margin: 1rem 0;
+  text-align: left;
+}
+
+.question h3 {
+  margin-bottom: 0.5rem;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.option:hover {
+  background-color: #f0f0f0;
+}
+
+.option input[type="radio"] {
+  margin-right: 0.5rem;
+}
+
+.header {
+  flex-shrink: 0;
+  padding: 2rem 2rem 1rem 2rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.logo {
+  height: 3rem;
+  width: auto;
+}
+
+.questions-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 2rem 1rem 2rem;
+}
+
+.submit-container {
+  flex-shrink: 0;
+  padding-top: 1rem;
+  border-top: 1px solid #ccc;
+}
+
+.submit-btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submit-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.retry-btn {
+  margin-top: 2rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.retry-btn:hover {
+  background-color: #218838;
 }
 
 .logo {

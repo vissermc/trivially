@@ -29,7 +29,7 @@ public class TriviaServiceTest {
 
     @Test
     void getQuestions_shouldReturnShuffledQuestions() {
-        List<OpenTDBFetcher.OpenTriviaQuestion> mockQuestions = List.of(
+        var mockQuestions = List.of(
                 new OpenTDBFetcher.OpenTriviaQuestion("Science", "multiple", "easy", "What is 2+2?", "4",
                         List.of("3", "5", "6"))
         );
@@ -37,17 +37,18 @@ public class TriviaServiceTest {
 
         triviaService.reload(); // Manually call since @PostConstruct not triggered in test
 
-        List<QuestionDTO> questions = triviaService.getQuestions();
+        var questions = triviaService.getQuestions();
         assertEquals(1, questions.size());
-        assertEquals("Science", questions.getFirst().category());
-        assertEquals("What is 2+2?", questions.getFirst().question());
-        assertTrue(questions.getFirst().options().contains("4"));
-        assertTrue(questions.getFirst().options().contains("3"));
+        var first = questions.getFirst();
+        assertEquals("Science", first.category());
+        assertEquals("What is 2+2?", first.question());
+        assertTrue(first.options().contains("4"));
+        assertTrue(first.options().contains("3"));
     }
 
     @Test
     void checkAnswers_shouldReturnCorrectScoreWhenPerfect() {
-        List<OpenTDBFetcher.OpenTriviaQuestion> mockQuestions = List.of(
+        var mockQuestions = List.of(
                 new OpenTDBFetcher.OpenTriviaQuestion("Science", "multiple", "easy", "What is 2+2?", "4",
                         List.of("3", "5", "6")),
                 new OpenTDBFetcher.OpenTriviaQuestion("Math", "multiple", "easy", "What is 3+3?", "6",
@@ -57,16 +58,16 @@ public class TriviaServiceTest {
 
         triviaService.reload();
 
-        AnswerSubmission submission = new AnswerSubmission(List.of("4", "6"));
+        var submission = new AnswerSubmission(List.of("4", "6"));
 
-        ResultDTO result = triviaService.checkAnswers(submission);
+        var result = triviaService.checkAnswers(submission);
         assertEquals(2, result.score());
         assertEquals(List.of("4", "6"), result.results());
     }
 
     @Test
     void checkAnswers_shouldReturnCorrectScoreWhenCompleteFailure() {
-        List<OpenTDBFetcher.OpenTriviaQuestion> mockQuestions = List.of(
+        var mockQuestions = List.of(
                 new OpenTDBFetcher.OpenTriviaQuestion("Science", "multiple", "easy", "What is 2+2?", "4",
                         List.of("3", "5", "6")),
                 new OpenTDBFetcher.OpenTriviaQuestion("Math", "multiple", "easy", "What is 3+3?", "6",
@@ -76,9 +77,9 @@ public class TriviaServiceTest {
 
         triviaService.reload();
 
-        AnswerSubmission submission = new AnswerSubmission(List.of("3", "7"));
+        var submission = new AnswerSubmission(List.of("3", "7"));
 
-        ResultDTO result = triviaService.checkAnswers(submission);
+        var result = triviaService.checkAnswers(submission);
         assertEquals(0, result.score());
         assertEquals(List.of("4", "6"), result.results());
     }

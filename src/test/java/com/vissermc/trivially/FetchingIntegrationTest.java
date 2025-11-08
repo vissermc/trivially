@@ -11,16 +11,17 @@ import static org.junit.jupiter.api.Assertions.*;
 @Tag("external")
 @EnabledIfEnvironmentVariable(named = "RUN_EXTERNAL_TESTS", matches = "true")
 @SpringBootTest
-public class FetcherIntegrationTest {
+public class FetchingIntegrationTest {
     @Autowired
     TriviaServiceImpl service;
+
     @Test
-    void fetchesActualQuestions() {
+    void shouldFetchActualQuestions() {
         var questions = service.getQuestions();
 
-        // Assert: we got a non-empty list with basic fields present
         assertNotNull(questions, "Questions list should not be null");
         assertFalse(questions.isEmpty(), "Questions list should not be empty");
+
         var q = questions.getFirst();
         assertNotNull(q.question(), "Question text should be present");
         assertNotNull(q.options(), "Options should not be null");

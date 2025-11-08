@@ -18,6 +18,6 @@ public class HomeControllerTest {
     void getIndex_shouldReturnIndexView() throws Exception {
         mockMvc.perform(get("/index"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("index.html")); // adjust based on your actual view name
+                .andExpect(view().name("index.html"));
     }
 }

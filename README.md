@@ -1,29 +1,28 @@
 # Trivia game
 
-Opdracht: https://www.quad.team/assignment
-
-# Aannames
+## Aannames
 
 Aannames op basis van de tekst van de Trivia game:
 - Met Open Trivia Database wordt https://opentdb.com/ bedoeld.
 - De antwoorden worden pas gechecked aan het eind, want de POST endpoint verwacht een lijst.
 
-# Opbouw
+## Opbouw
 
 Backend: Spring Boot
 Frontend: React, in directory 'client'
 
+## Local deployment
 
-# Local deployment
+Maven actie `spring-boot:run`
 
-Maven actie spring-boot:run
+## Build and upload to Google Cloud
 
-# Build and upload to Google Cloud
-
+```bash
 mvnw package
 gcloud app deploy
+```
 
-# Demo
+## Demo
 
 url: https://trivial123.nw.r.appspot.com
 

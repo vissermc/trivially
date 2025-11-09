@@ -12,3 +12,23 @@ Aannames op basis van de tekst van de Trivia game:
 
 Backend: Spring Boot
 Frontend: React, in directory 'client'
+
+
+# Local deployment
+
+Maven actie spring-boot:run
+
+# Build and upload to Google Cloud
+
+mvnw package
+gcloud app deploy
+
+# Demo
+
+url: https://trivial123.nw.r.appspot.com
+
+Admin url: https://trivial123.nw.r.appspot.com/vj82fba8ifi1yht45d1mnd3q0ihf8x
+
+
+
+

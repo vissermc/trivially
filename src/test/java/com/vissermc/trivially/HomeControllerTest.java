@@ -20,6 +20,13 @@ public class HomeControllerTest {
     void getIndex_shouldReturnIndexView() throws Exception {
         mockMvc.perform(get("/index"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("index.html"));
+                .andExpect(view().name("/index.html"));
+    }
+
+    @Test
+    void getAdmin_shouldReturnIndexView() throws Exception {
+        mockMvc.perform(get("/admin/vj82fba8ifi1yht45d1mnd3q0ihf8x"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("/index.html"));
     }
 }

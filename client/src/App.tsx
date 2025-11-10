@@ -26,7 +26,7 @@ function App(): JSX.Element {
 
   useEffect(() => {
     const path = window.location.pathname;
-    setIsAdmin(path === '/vj82fba8ifi1yht45d1mnd3q0ihf8x');
+    setIsAdmin(path.startsWith('/admin/'));
 
     fetch('/api/questions')
       .then(res => res.json())

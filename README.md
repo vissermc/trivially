@@ -26,7 +26,7 @@ gcloud app deploy
 
 url: https://trivial123.nw.r.appspot.com
 
-Admin url: https://trivial123.nw.r.appspot.com/vj82fba8ifi1yht45d1mnd3q0ihf8x
+Admin url: https://trivial123.nw.r.appspot.com/admin/vj82fba8ifi1yht45d1mnd3q0ihf8x
 
 
 
